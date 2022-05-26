@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { GlobalStyle } from './GlobalStyle';
+
+import Header from './components/Header';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
+
+import DashboardPage from './pages/DashboardPage';
+import StartALobbyPage from './pages/StartALobbyPage';
+import FindALobbyPage from './pages/FindALobbyPage';
+import LobbyPage from './pages/LobbyPage';
+import GamePage from './pages/GamePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <GlobalStyle/>
+      <Router>
+          <Routes>
+            <Route exact path='/' element={
+              //signup and login goes here then it redirects the user to dashboard page
+              <>
+                <SignUp />
+              </>
+            }>
+            </Route>
+            <Route path='/dashboard' element={<DashboardPage/>}/>
+            <Route path='/start-lobby' element={<StartALobbyPage/>}/>
+            <Route path='/find-lobby' element={<FindALobbyPage/>}/>
+            <Route path='/lobby' element={<LobbyPage/>}/>
+            <Route path='/game' element={<GamePage/>}/>
+          </Routes>  
+      </Router>
+    </>
   );
 }
 
